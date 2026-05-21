@@ -1,0 +1,102 @@
+{% extends 'artistapp/artistmaster.html' %}
+{% load static %}
+{% block content %}
+
+<div class="pd-ltr-20 xs-pd-20-10">
+    <div class="min-height-200px">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title">
+                        <h4>Artwork Management</h4>
+                    </div>
+                    <nav aria-label="breadcrumb" role="navigation">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'artistindexview' %}">Home</a></li>
+                            {% comment %} <li class="breadcrumb-item active" aria-current="page">Add Artwork</li> {% endcomment %}
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artwork Form Start -->
+        <div class="pd-20 card-box mb-30">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <h4 class="text-blue h4">Add Artwork Form</h4>
+                </div>
+            </div>
+
+            <!-- FORM START -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Category</label>
+                    <div class="col-sm-12 col-md-10">
+                        <select class="form-control" name="category" required>
+                            <option value="" disabled selected>-- Select Category --</option>
+                            {% for cat in category %}
+                                <option value="{{ cat.id }}">{{ cat.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">ArtImage</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="file" name="Artimage" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Art Name</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="text" name="name" placeholder="Enter Art Name" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Description</label>
+                    <div class="col-sm-12 col-md-10">
+                        <textarea class="form-control" name="description" placeholder="Enter Description" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Price</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="number" name="price" placeholder="Enter Price" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Quantity</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="number" name="Quantity" placeholder="Enter Quantity" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Total</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" type="number" name="Total" placeholder="Enter Total" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12 col-md-10 offset-md-2">
+                        <button type="submit" class="btn btn-primary">Submit Form</button>
+                        <a href="{% url 'artistindexview' %}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+            </form>
+            <!-- FORM END -->
+        </div>
+        <!-- Artwork Form End -->
+    </div>
+</div>
+
+{% endblock %}

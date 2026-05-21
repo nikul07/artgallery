@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Art Gallery</title>
+
+	<!-- favicon -->
+	 {% comment %} <link rel="shortcut icon" type="image/png" href="{% static 'userapp/assets/img/loggo.png' %}">  {% endcomment %}
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/responsive.css' %}">
+
+</head>
+<body>
+	
+	<!--PreLoader-->
+     <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div> 
+    <!--PreLoader Ends-->
+	
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="{% url 'userindexview' %}">
+								<img src="assets/img/logo.png" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a href="{% url 'userindexview' %}">Home</a>
+								</li>
+								<li><a href="{% url 'aboutview' %}">About</a></li>
+								{% comment %} <li><a href="#">Pages</a>
+									<ul class="sub-menu">
+										
+										
+										<li><a href="{% url 'cartview' %}">Cart</a></li>
+										<li><a href="{% url 'checkoutview' %}">Check Out</a></li>
+										<li><a href="{% url 'usercontactview' %}">Contact</a></li>
+										
+										
+									</ul>
+								 {% endcomment %}
+								<li><a href="{% url 'usercontact' %}">Contact</a></li>
+								<li><a href="{% url 'shopview' %}">Shop</a>
+								<li><a href="{% url 'custom_painting_request' %}">Customizes Art</a>
+									{% comment %} <ul class="sub-menu">
+										
+										<li><a href="{% url 'checkoutview' %}">Check Out</a></li>
+										<li><a href="{% url 'singleartworkview' %}">Single ArtWork</li>
+										<li><a href="{% url 'cartview' %}">Cart</a></li>
+									</ul>
+								</li> {% endcomment %}
+								<li><a href="{% url 'myorderview' %}">My Orders</a></li>
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="{% url 'cartview' %}"><i class="fas fa-shopping-cart"></i></a>
+									
+										{% if not user.is_authenticated %}
+											<li><a href="{% url 'loginview' %}" class="login-btn">Login</a></li>
+											{% comment %} <li><a href="{% url 'registerview' %}" class="register-btn">Register</a></li> {% endcomment %}
+										{% else %}
+											<li>
+												<a class="nav-link" href="{% url 'userprofileview' %}">
+													<span>{{ user.username }}</span>
+												</a>
+											</li>
+										{% endif %}
+									</div>
+									
+								</li>
+							</ul>
+						</nav>
+						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	
+	<!-- search area -->
+	
+    {% block content %}
+    {% endblock %}
+
+	<!-- end logo carousel -->
+
+	<!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p>At [Art Gallery], we believe art is more than what you see — it’s what you feel. Founded with a passion for creativity and expression, our gallery is a curated space where emerging and established artists come together to inspire.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>384265, Patan, Hngu</li>
+							<li>support@Artgallery.com</li>
+							<li>+00 111 222 3333</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="{% url 'userindexview'%}">Home</a></li>
+							<li><a href="{% url 'aboutview' %}">About</a></li>
+							<li><a href="{% url 'shopview' %}">Shop</a></li>
+							<li><a href="{% url 'usercontact' %}">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box join-artist">
+						<h2 class="widget-title">Join as an Artist</h2>
+						<p>Join our artist community and showcase your work.</p>
+						<a href="{% url 'artistregisterview' %}" class="btn btn-primary" style="background-color: blue;">Join as Artist</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+	<!-- end footer -->
+	
+	<!-- copyright -->
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<p>Copyrights &copy; 2025 - <a href="https://imransdesign.com/">Krish Prajapati</a>, All Rights Reserved.<br></p>
+				</div>
+				<div class="col-lg-6 text-right col-md-12">
+					<div class="social-icons">
+						<ul>
+							<li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="https://x.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+							<li><a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+							<li><a href="https://in.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- end copyright -->
+	
+	<!-- jquery -->
+	<script src="{% static 'userapp/assets/js/jquery-1.11.3.min.js' %}"></script>
+	<!-- bootstrap -->
+	<script src="{% static 'userapp/assets/bootstrap/js/bootstrap.min.js' %}"></script>
+	<!-- count down -->
+	<script src="{% static 'userapp/assets/js/jquery.countdown.js' %}"></script>
+	<!-- isotope -->
+	<script src="{% static 'userapp/assets/js/jquery.isotope-3.0.6.min.js' %}"></script>
+	<!-- waypoints -->
+	<script src="{% static 'userapp/assets/js/waypoints.js' %}"></script>
+	<!-- owl carousel -->
+	<script src="{% static 'userapp/assets/js/owl.carousel.min.js' %}"></script>
+	<!-- magnific popup -->
+	<script src="{% static 'userapp/assets/js/jquery.magnific-popup.min.js' %}"></script>
+	<!-- mean menu -->
+	<script src="{% static 'userapp/assets/js/jquery.meanmenu.min.js' %}"></script>
+	<!-- sticker js -->
+	<script src="{% static 'userapp/assets/js/sticker.js' %}"></script>
+	<!-- main js -->
+	<script src="{% static 'userapp/assets/js/main.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends 'userapp/usermaster.html' %}
+{% load static %}
+{% block content %}
+<div class="container" style="padding: 100px 0;">
+  <h2 class="mb-4 text-center">My Orders</h2>
+
+  {% if all_orders %}
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>No</th>
+          <th>Image</th>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Total</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in all_orders %}
+          {% with forloop.counter as order_number %}
+            {% for item in order.items %}
+            <tr>
+              <td>{{ order_number }}</td>
+              <td>
+                {% if item.product.Artimage %}
+                  <img src="{{ item.product.Artimage.url }}" alt="{{ item.product.name }}" style="width: 60px; height: 60px; border-radius: 8px;">
+                {% else %}
+                  <img src="https://via.placeholder.com/60" alt="No Image" style="width: 60px; height: 60px; border-radius: 8px;">
+                {% endif %}
+              </td>
+              <td>{{ item.product.name }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>Rs.{{ item.subtotal }}</td>
+              <td>Rs.{{ order.final.total }}</td>
+              <td>
+                {% if order.final.status %}
+                  <span class="badge bg-success">Delivered</span>
+                {% else %}
+                  <span class="badge bg-warning text-dark">Pending</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          {% endwith %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-center mt-4">
+    <a href="{% url 'shopview' %}" class="btn btn-success me-2">Buy Again</a>
+    <a href="{% url 'userindexview' %}" class="btn btn-danger">Back To Home</a>
+  </div>
+
+  {% else %}
+    <div class="text-center mt-5" style="font-size: 18px; color: #777;">
+      No orders found.
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

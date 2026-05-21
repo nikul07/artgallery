@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Register</title>
+  <link rel="stylesheet" href="{% static 'userapp/assets/css/form.css' %}">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px 25px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .login-button {
+      width: 100%;
+      background-color: #4a67ff;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .login-button:hover {
+      background-color: #3b54d4;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .link a {
+      color: #4a67ff;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <form class="form-container" method="POST">
+    {% csrf_token %}
+    <div class="title">Admin Register</div>
+
+    <div class="input-group">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" required>
+    </div>
+
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required>
+    </div>
+
+    <div class="input-group">
+      <label for="password1">Confirm Password</label>
+      <input type="password" name="password1" id="password1" required>
+    </div>
+
+    <button type="submit" class="login-button">Register Admin</button>
+
+    <div class="link">
+      Already an admin? <a href="{% url 'adminloginview' %}">Login</a>
+    </div>
+  </form>
+</body>
+</html>

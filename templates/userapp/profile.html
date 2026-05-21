@@ -1,0 +1,297 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    	<!-- favicon -->
+	 {% comment %} <link rel="shortcut icon" type="image/png" href="{% static 'userapp/assets/img/loggo.png' %}">  {% endcomment %}
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/all.min.css' %}">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/bootstrap/css/bootstrap.min.css' %}">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/owl.carousel.css' %}">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/magnific-popup.css' %}">
+	<!-- animate css -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/animate.css' %}">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/meanmenu.min.css' %}">
+	<!-- main style -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/main.css' %}">
+	<!-- responsive -->
+	<link rel="stylesheet" href="{% static 'userapp/assets/css/responsive.css' %}">
+    <style>
+       
+
+        /* Profile Container */
+        .profile-container {
+            text-align: center;
+        }
+
+        .profile-card {
+            /* {% comment %} background: #ffffff; {% endcomment %} */
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 90%;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 15px;
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 4px solid #ff5e62;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-header h2 {
+            color: #333;
+            margin: 10px 0 5px;
+        }
+
+        .profile-header p {
+            font-size: 15px;
+            color: #777;
+        }
+
+        /* Profile Body */
+        .profile-body {
+            padding-top: 15px;
+        }
+
+        .profile-body h3 {
+            color: #444;
+            margin-bottom: 10px;
+        }
+
+        .profile-body p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .profile-body strong {
+            color: #222;
+        }
+
+        /* Profile Actions */
+        .profile-actions {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+            margin: 5px;
+        }
+
+        .edit {
+            background-color: #ff5e62;
+            color: white;
+        }
+
+        .logout {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .home {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .profile-card {
+                width: 95%;
+            }
+
+            .btn {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    	<!-- header -->
+	<div class="top-header-area bg-secondary" style="margin-bottom: 100px;" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="{% url 'userindexview' %}">
+								<img src="assets/img/logo.png" alt="">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li class="current-list-item"><a href="{% url 'userindexview' %}">Home</a>
+								</li>
+								<li><a href="{% url 'aboutview' %}">About</a></li>
+								{% comment %} <li><a href="#">Pages</a>
+									<ul class="sub-menu">
+										
+										
+										<li><a href="{% url 'cartview' %}">Cart</a></li>
+										<li><a href="{% url 'checkoutview' %}">Check Out</a></li>
+										<li><a href="{% url 'usercontactview' %}">Contact</a></li>
+										
+										
+									</ul>
+								 {% endcomment %}
+								<li><a href="{% url 'usercontact' %}">Contact</a></li>
+								<li><a href="{% url 'shopview' %}">Shop</a>
+									{% comment %} <ul class="sub-menu">
+										
+										<li><a href="{% url 'checkoutview' %}">Check Out</a></li>
+										<li><a href="{% url 'singleartworkview' %}">Single ArtWork</li>
+										<li><a href="{% url 'cartview' %}">Cart</a></li>
+									</ul>
+								</li> {% endcomment %}
+								<li><a href="{% url 'myorderview' %}">My Orders</a></li>
+								<li>
+									<div class="header-icons">
+										<a class="shopping-cart" href="{% url 'cartview' %}"><i class="fas fa-shopping-cart"></i></a>
+									
+										{% if not user.is_authenticated %}
+											<li><a href="{% url 'loginview' %}" class="login-btn">Login</a></li>
+											{% comment %} <li><a href="{% url 'registerview' %}" class="register-btn">Register</a></li> {% endcomment %}
+										{% else %}
+											<li>
+												<a class="nav-link" href="{% url 'userprofileview' %}">
+													<span>{{ user.username }}</span>
+												</a>
+											</li>
+										{% endif %}
+									</div>
+									
+								</li>
+							</ul>
+						</nav>
+						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	
+
+    <div class="profile-container d-flex justify-content-center" style="padding: 150px 0;" >
+        <div class="profile-card">
+            <div class="profile-header">
+                {% comment %} <img src="{% static 'userapp/images/user.svg' %}" alt="Profile Picture" class="profile-pic"> {% endcomment %}
+                <h2>{{ user.username }}</h2>
+                <p>{{ user.email }}</p>
+            </div>
+            <div class="profile-body">
+                <h3>Account Details</h3>
+                <p><strong>Username:</strong> {{ user.username }}</p>
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}</p>
+
+                <div class="profile-actions">
+                    {% comment %} <a href="{% url 'edit_profile' %}" class="btn edit"><i class="fa-solid fa-user-edit"></i> Edit Profile</a> {% endcomment %}
+                    <a href="{% url 'logoutview' %}" class="btn logout"><i class="fa-solid fa-sign-out-alt"></i> Logout</a>
+                    <a href="{% url 'userindexview' %}" class="btn home"><i class="fa-solid fa-home"></i> Home</a>
+                    <a href="{% url 'edit_profile' %}" class="btn edit"><i class="fa-solid fa-user-pen"></i> Edit Profile</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+	<div class="footer-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box about-widget">
+						<h2 class="widget-title">About us</h2>
+						<p>At [Art Gallery], we believe art is more than what you see — it’s what you feel. Founded with a passion for creativity and expression, our gallery is a curated space where emerging and established artists come together to inspire.</p>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box get-in-touch">
+						<h2 class="widget-title">Get in Touch</h2>
+						<ul>
+							<li>384265, Patan, Hngu</li>
+							<li>support@Artgallery.com</li>
+							<li>+00 111 222 3333</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box pages">
+						<h2 class="widget-title">Pages</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-box join-artist">
+						<h2 class="widget-title">Join as an Artist</h2>
+						<p>Join our artist community and showcase your work.</p>
+						<a href="{% url 'artistregisterview' %}" class="btn btn-primary">Join as Artist</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+	<!-- end footer -->
+	
+</body>
+</html>

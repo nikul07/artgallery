@@ -1,0 +1,10 @@
+media_backup/
+myenv/
+__pycache__/
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+.env
+static/adminapp/assets/vendor/
+static/artistapp/vendors/

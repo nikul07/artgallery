@@ -1,0 +1,167 @@
+{% extends 'adminapp/adminmaster.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+       <style>
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        /* Timeline Style */
+        .timeline {
+            list-style: none;
+            padding: 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            background: #FFFFFF;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, #E6E9F0, #EEF1F5);
+        }
+
+        /* Icon Style */
+        .bi-check-circle-fill {
+            font-size: 1.2rem;
+        }
+
+        /* Dashboard Card Styling */
+        .dashboard-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 210px; /* Increased height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard-card i {
+            font-size: 3rem; /* Increased icon size */
+        }
+
+        .dashboard-card .count {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="pagetitle">
+        <h1 class="fw-bold text-primary">Dashboard</h1>
+        
+    </div>
+    <!-- Dashboard Overview Cards -->
+    <div class="row mt-4">
+        <!-- Manage Users -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dashboard-card">
+                    <i class="bi bi-people-fill text-primary"></i>
+                    <a href="{% url 'usermanageview'%}"><h5 class="card-title">Manage Users</h5></a>
+                    <p class="count">{{ user_count }}</p> <!-- Replace with dynamic count if needed -->
+                </div>
+            </a>
+        </div>
+        <!-- Manage Furniture Owners -->
+        {% comment %} <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dashboard-card">
+                    <i class="bi bi-shop text-success"></i>
+                    <h5 class="card-title">Manage Artist</h5>
+                    <p class="count">50</p> <!-- Replace with dynamic count if needed -->
+                </div>
+            </a>
+        </div> {% endcomment %}
+        <!-- Manage Orders -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dashboard-card">
+                    <i class="bi bi-box-seam text-warning"></i>
+                    <a href="{% url 'tblgeneralview'%}"><h5 class="card-title">Manage Orders</h5></a>
+                    <p class="count">{{order_count}} </p> <!-- Replace with dynamic count if needed -->
+                </div>
+            </a>
+        </div>
+        <!-- Manage Categories -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dashboard-card">
+                    <i class="fas fa-folder text-info"></i>
+                    <a href="{% url 'managecategories'%}"><h5 class="card-title">Manage Categories</h5></a>
+                    <p class="count">{{ category_count }}</p> <!-- Replace with dynamic count if needed --> 
+                </div>
+            </a>
+        </div>
+        <!-- Manage Payments -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dashboard-card">
+                    <i class="bi bi-credit-card text-danger"></i>
+                    <h5 class="card-title">Manage Payments</h5>
+                    <p class="count"></p> <!-- Replace with dynamic count if needed -->
+                </div>
+            </a>
+        </div>
+        <!-- Manage Feedback -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dashboard-card">
+                    <i class="bi bi-chat-dots text-secondary"></i>
+                    <h5 class="card-title">Manage Feedback</h5>
+                    <p class="count"></p> <!-- Replace with dynamic count if needed -->
+                </div>
+            </a>
+        </div>
+        <!-- Manage Enquiries -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dashboard-card">
+                    <i class="bi bi-envelope text-warning"></i>
+                    <h5 class="card-title">Manage Enquiries</h5>
+                    <p class="count"></p> <!-- Replace with dynamic count if needed -->
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Recent Activity Section -->
+    <div class="container mt-4">
+        <div class="card glass-card shadow-lg border-0">
+            <div class="card-header text-white d-flex align-items-center" style="background: linear-gradient(135deg, #4E54C8, #8F94FB);">
+                <i class="bi bi-clock-history me-2 fs-4"></i>
+                <h5 class="mb-0">Recent Activity
+
+
+{% endblock %}

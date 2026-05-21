@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    color: #555;
+}
+
+.login-part {
+    width: 420px;
+    height: 680px;
+    background: #ecf0f3;
+    padding: 60px 35px;
+    border-radius: 30px;
+    box-shadow: 10px 10px 20px #c2c3c5, -10px -10px 20px #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Logo */
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: url('https://raw.githubusercontent.com/springtofigh/neumorphism-login/refs/heads/main/logo.jpg') center/cover;
+    margin: 0 auto;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    font-size: 28px;
+    padding-top: 20px;
+    color: #444;
+    font-weight: bold;
+}
+
+/* Input Fields (Without Shadow) */
+.fields {
+    width: 100%;
+    padding: 50px 5px 5px 5px;
+}
+
+.fields input {
+    width: 100%;
+    border: 1px solid #ccc;
+    outline: none;
+    background: #fff;
+    font-size: 18px;
+    padding: 15px;
+    color: #555;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+/* Input Containers */
+.username, .password {
+    margin-bottom: 25px;
+    padding: 15px;
+    background: none;
+    border-radius: 25px;
+}
+
+/* SVG Icons */
+.svg-icon {
+    height: 20px;
+    margin: -28 10px -4px 20px;
+}
+
+/* Animated Login Button */
+.login-button {
+    width: 100%;
+    height: 55px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #02c8db, #0072ff);
+    color: white;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease-in-out;
+}
+
+.login-button:hover {
+    background: linear-gradient(135deg, #50e5b9, #00c6ff);
+    font-size: 20px;
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 255, 255, 0.5);
+}
+
+/* Links */
+.link {
+    padding-top: 20px;
+    text-align: center;
+}
+
+.link a {
+    text-decoration: none;
+    color: #666;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.link a:hover {
+    color: #00bcd4;
+    text-shadow: 0px 0px 5px rgba(0, 188, 212, 0.8);
+}

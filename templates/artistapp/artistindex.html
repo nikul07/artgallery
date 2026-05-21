@@ -1,0 +1,171 @@
+{% extends 'artistapp/artistmaster.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #f3f4f6;
+    color: #333;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+  }
+
+  .card {
+    border-radius: 25px;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    color: white;
+  }
+
+  .card:hover {
+    transform: translateY(-8px);
+  }
+
+  .card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 1.1rem;
+  }
+
+  .card-icon {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+  }
+
+  .button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.25);
+    color: black;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .button:active {
+    transform: scale(0.95);
+  }
+
+  /* Card background gradients */
+  .revenue {
+    background: linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%);
+  }
+
+  .orders {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #1f2937;
+  }
+
+  .manage-orders {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #1f2937;
+  }
+
+  .categories {
+    background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+    color: #1f2937;
+  }
+
+  .inquiries {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    color: #1f2937;
+  }
+
+  /* Button styles for light background cards */
+  .orders .button,
+  .manage-orders .button,
+  .categories .button,
+  .inquiries .button {
+    background: rgba(0, 0, 0, 0.1);
+    color: #1f2937;
+  }
+
+  .orders .button:hover,
+  .manage-orders .button:hover,
+  .categories .button:hover,
+  .inquiries .button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  .orders .button:active,
+  .manage-orders .button:active,
+  .categories .button:active,
+  .inquiries .button:active {
+    transform: scale(0.95);
+  }
+
+</style>
+
+<div class="container">
+ 
+  <div class="dashboard">
+    
+    <div class="card manage-orders">
+      <div class="card-icon">📝</div>
+      <h2>Manage Orders</h2>
+      <p>View, update or cancel your orders.</p>
+      <a href="{% url 'basictableview' %}" class="button" role="button">Manage Orders</a>
+    </div>
+    <div class="card categories">
+      <div class="card-icon">🎨</div>
+      <h2>Manage Categories</h2>
+      <p>Edit or add new art categories.</p>
+      <a href="{% url 'artmanagecategories'%}" class="button" role="button">Manage Categories</a>
+    </div>
+    <div class="card orders">
+      <div class="card-icon">📦</div>
+      <h2>Total Orders</h2>
+      <p> Orders</p>
+      <a href="#" class="button" role="button">See All Orders</a>
+    </div>
+    <div class="card inquiries">
+      <div class="card-icon">📩</div>
+      <h2>Manage Inquiries</h2>
+      <p>Respond to customer questions.</p>
+      <a href="#" class="button" role="button">View Inquiries</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'adminapp/adminmaster.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="row">
+        <!-- Add Category Form -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add New Category</h5>
+                    <form method="POST" action="{% url 'addcategory' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="categoryName" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" name="name" required>
+                        </div>
+                        <a href="{% url 'addcategory' %}"></a><button type="submit" class="btn btn-success w-100">Add Category</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category Table -->
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Category Table</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>NO</th>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ab in category %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ ab.name }}</td>
+                                <td>
+                                    <a href="{% url 'updatecategory' ab.id %}" class="btn btn-primary btn-sm">Update</a>
+                                    <a href="{% url 'deletecategory' ab.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Delete this category?')">Delete</a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                        <tr>
+                            <td colspan="3" class="text-center">No categories found.</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ {% endblock %}

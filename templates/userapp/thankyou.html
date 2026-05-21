@@ -1,0 +1,57 @@
+{% extends 'userapp/usermaster.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  .thankyou-section {
+    padding: 100px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+  }
+
+  .thankyou-box {
+    background: white;
+    padding: 50px 30px;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .thankyou-box h1 {
+    font-size: 2.3rem;
+    color:rgb(16, 15, 14);
+    margin-bottom: 20px;
+  }
+
+  .thankyou-box p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+  }
+
+  .btn-home {
+    background-color: #f28123;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .btn-home:hover {
+    background-color: #d96c0b;
+  }
+</style>
+
+<div class="thankyou-section">
+  <div class="thankyou-box">
+    <h1>Thank You, {{ name }}!</h1>
+    <p>Your custom painting request has been submitted successfully.</p>
+    <p>We’ll get in touch with you soon via email to discuss your ideas further.</p>
+    <a href="{% url 'userindexview' %}" class="btn-home">Back to Home</a>
+  </div>
+</div>
+
+{% endblock %}

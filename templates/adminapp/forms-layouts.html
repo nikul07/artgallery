@@ -1,0 +1,104 @@
+{% extends 'adminapp/adminmaster.html' %}
+{% block content %}
+{% load static %}
+
+<div class="pagetitle">
+    <h1>Product Form Elements</h1> 
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'indexview' %}">Home</a></li>
+            <li class="breadcrumb-item">Forms</li>
+            <li class="breadcrumb-item active">Elements</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">General Form Elements</h5>
+
+                    <!-- General Form Elements -->
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        
+                        <!-- Category Dropdown -->
+                        <div class="row mb-3">
+                            <label for="category" class="col-sm-2 col-form-label">Category</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="category" required>
+                                    <option value="" disabled selected>-- Select Category --</option>
+                                    {% for ab in category %}
+                                    <option value="{{ab.id}}">{{ab.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Art Image Upload -->
+                        <div class="row mb-3">
+                            <label for="Artimage" class="col-sm-2 col-form-label">Art Image</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="Artimage" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- Art Name -->
+                        <div class="row mb-3">
+                            <label for="name" class="col-sm-2 col-form-label">Art Name</label>
+                            <div class="col-sm-10">
+                                <input type="text"  name="name" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="row mb-3">
+                            <label for="description" class="col-sm-2 col-form-label">Description</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="description" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- Price -->
+                        <div class="row mb-3">
+                            <label for="price" class="col-sm-2 col-form-label">Product Price</label>
+                            <div class="col-sm-10">
+                                <input type="number" value="{{ data.price|default_if_none:'' }}" name="price" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="row mb-3">
+                            <label for="Quantity" class="col-sm-2 col-form-label">Quantity</label>
+                            <div class="col-sm-10">
+                                <input type="number" value="{{ data.Quantity|default_if_none:'' }}" name="Quantity" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="row mb-3">
+                            <label for="Total" class="col-sm-2 col-form-label">Total</label>
+                            <div class="col-sm-10">
+                                <input type="number" value="{{ data.Total|default_if_none:'' }}" name="Total" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">Submit Button</label>
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit Form</button>
+                                <a href="{% url 'tblgeneralview' %}" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </div>
+
+                    </form><!-- End General Form Elements -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

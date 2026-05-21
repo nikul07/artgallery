@@ -1,0 +1,155 @@
+{% extends 'userapp/usermaster.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+  .breadcrumb-section {
+    background-image: url("{% static 'userapp/assets/img/banner-bg.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+    color: white;
+  }
+
+  .breadcrumb-text h1 {
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+
+  .breadcrumb-text p {
+    font-size: 1.1rem;
+  }
+
+  .custom-form-wrapper {
+    background-color: #fff;
+    padding: 50px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.06);
+    margin-top: 60px;
+    margin-bottom: 60px;
+    color: #333;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #333;
+  }
+
+  .form-control,
+  .form-select {
+    border-radius: 8px;
+    padding: 10px;
+    color: #333;
+  }
+
+  .form-text {
+    color: #666;
+  }
+
+  .btn-primary {
+    padding: 12px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: #f28123;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background-color: #d96c0b;
+  }
+
+  .preview-img {
+    max-width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: none;
+  }
+
+  .section-title h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: #f28123;
+  }
+</style>
+
+<!-- Breadcrumb Section -->
+<div class="breadcrumb-section">
+  <div class="container text-center">
+    <div class="breadcrumb-text">
+      <h1>Custom Painting Request</h1>
+      <p>Commission a unique artwork</p>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Painting Form -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
+      <div class="custom-form-wrapper">
+        <div class="section-title text-center">
+          <h2>🎨 Request a Custom Painting</h2>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Painting Description</label>
+            <textarea name="description" class="form-control" id="description" rows="4" placeholder="Describe your painting idea..." required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="size" class="form-label">Preferred Size</label>
+            <select name="size" class="form-select" id="size" required>
+              <option value="">-- Select Size --</option>
+              <option value="small">Small (12x16 inches)</option>
+              <option value="medium">Medium (18x24 inches)</option>
+              <option value="large">Large (24x36 inches)</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="reference_image" class="form-label">Upload Reference Image (optional)</label>
+            <input type="file" name="reference_image" class="form-control" id="reference_image" accept="image/*">
+            <img id="preview" class="preview-img"/>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Additional Notes</label>
+            <div class="form-text">We’ll contact you for further discussion via email.</div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JS to preview uploaded image -->
+<script>
+  document.getElementById("reference_image").addEventListener("change", function (event) {
+    const reader = new FileReader();
+    reader.onload = function () {
+      const preview = document.getElementById("preview");
+      preview.src = reader.result;
+      preview.style.display = "block";
+    };
+    reader.readAsDataURL(event.target.files[0]);
+  });
+</script>
+
+{% endblock %}

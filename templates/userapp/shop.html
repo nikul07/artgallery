@@ -1,0 +1,103 @@
+{% extends 'userapp/usermaster.html' %}
+{% load static %}
+{% block content %}
+
+<style>
+	.add-to-cart-btn {
+		background-color: #F28123;
+		color: #fff;
+		border: none;
+		padding: 10px 20px;
+		border-radius: 30px;
+		font-weight: 600;
+		transition: all 0.3s ease;
+		display: inline-block;
+		text-decoration: none;
+	}
+
+	/* Simple Hover Effect */
+	.add-to-cart-btn:hover {
+		background-color: #000; /* Change background color to black */
+		color: #F28123;  /* Change text color to white */
+	}
+</style>
+
+<!-- Breadcrumb Section -->
+<div class="breadcrumb-section breadcrumb-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="breadcrumb-text">
+					<p>Our Art</p>
+					<h1>Shop</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Product Filter -->
+<div class="product-section mt-150 mb-150">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="product-filters">
+					<ul class="d-flex justify-content-center flex-wrap gap-3 list-unstyled">
+						<li>
+							<a href="{% url 'shopview' %}" class="{% if not category_id %}active{% endif %}">All</a>
+						</li>
+						{% for ab in category %}
+						<li>
+							<a href="{% url 'shopview' %}?category_id={{ ab.id }}"
+							   class="{% if category_id == ab.id %}active{% endif %}">
+								{{ ab.name }}
+							</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- Product Cards -->
+		<div class="row product-lists mt-4">
+			{% for ab in products %}
+			<div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5 d-flex align-items-stretch">
+				<div class="card text-center w-100 shadow-sm">
+					<img src="{{ ab.Artimage.url }}" class="card-img-top img-fluid" style="height: 300px; object-fit: cover; border-radius: 10px 10px 0 0;" alt="{{ ab.name }}">
+					<div class="card-body">
+						<h5 class="card-title">{{ ab.name }}</h5>
+						<p class="card-text"><strong>Rs. {{ ab.price }}</strong></p>
+						{% if user.is_authenticated %}
+						<a href="{% url 'cart_add' ab.id %}" class="btn add-to-cart-btn mt-2">
+							<i class="fas fa-shopping-cart"></i> Add to Cart
+						</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			{% empty %}
+			<div class="col-12 text-center">
+				<p>No artworks found in this category.</p>
+			</div>
+			{% endfor %}
+		</div>
+
+		<!-- Pagination -->
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<div class="pagination-wrap">
+					<ul class="d-flex justify-content-center gap-2 list-unstyled">
+						<li><a href="#">Prev</a></li>
+						<li><a class="active" href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">Next</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

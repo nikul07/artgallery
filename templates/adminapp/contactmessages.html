@@ -1,0 +1,40 @@
+{% extends 'adminapp/adminmaster.html' %}
+{% load static %}
+{% block content %}
+<h1>Contact Messages</h1>
+
+<table border="1" cellspacing="0" cellpadding="10">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Subject</th>
+            <th>Message</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for msg in messages %}
+        <tr>
+            <td>{{ msg.name }}</td>
+            <td>{{ msg.email }}</td>
+            <td>{{ msg.phone }}</td>
+            <td>{{ msg.subject }}</td>
+            <td>{{ msg.message }}</td>
+            <td>
+                {% if msg.is_replied %}
+                    ✅ Yes
+                {% else %}
+                    ❌ No
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">No contact messages found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

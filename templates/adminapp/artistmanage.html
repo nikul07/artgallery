@@ -1,0 +1,70 @@
+{% extends 'adminapp/adminmaster.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+    <div class="pagetitle">
+        <h1>Artist Management</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'indexview' %}">Home</a></li>
+                <li class="breadcrumb-item">Manage Artists</li>
+                <li class="breadcrumb-item active">Artist List</li>
+            </ol>
+        </nav>
+    </div>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Artist Table</h5>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>NO</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for artist in artists %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ artist.name }}</td>
+                                    <td>{{ artist.email }}</td>
+                                    <td>
+                                        {% if artist.is_active %}
+                                            <span class="badge bg-success">Active</span>
+                                        {% else %}
+                                            <span class="badge bg-danger">Inactive</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if artist.is_active %}
+                                            <a href="{% url 'deactivate_artist' artist.id %}" class="btn btn-warning btn-sm" onclick="return confirm('Are you sure you want to deactivate this artist?')">Deactivate</a>
+                                        {% else %}
+                                            <a href="{% url 'activate_artist' artist.id %}" class="btn btn-success btn-sm" onclick="return confirm('Are you sure you want to activate this artist?')">Activate</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-center">No artists found.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

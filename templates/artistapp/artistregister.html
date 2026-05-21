@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artist Registration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe0e9, #fff5db);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .register-box {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 28px;
+      color: #b24592;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1.5px solid #ddd;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      border-color: #b24592;
+      outline: none;
+      background-color: #fff5fa;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .checkbox-group input {
+      margin-right: 8px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(to right, #b24592, #f15f79);
+      border: none;
+      padding: 14px;
+      color: white;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 25px;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(to right, #a43781, #e14c69);
+    }
+
+    @media (max-width: 600px) {
+      .register-box {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="register-box">
+    <h2>🎨 Artist Registration</h2>
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirm">Confirm Password</label>
+        <input type="password" name="password1" id="confirm" required>
+      </div>
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">I agree to the Terms and Conditions</label>
+      </div>
+
+      <button type="submit" class="submit-btn">Register as Artist</button>
+    </form>
+  </div>
+</body>
+</html>
