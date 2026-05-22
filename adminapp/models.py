@@ -18,9 +18,9 @@ class Product(models.Model):
     Quantity = models.PositiveIntegerField(default=0)
     Total = models.DecimalField(max_digits=10, decimal_places=2)
 
-@property
-def image(self):
-    return self.Artimage
+    @property
+    def image(self):
+        return self.Artimage
 
 
 class Cart(models.Model):  # Ensure correct capitalization
