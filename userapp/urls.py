@@ -4,6 +4,8 @@ from userapp import views
 from .views import remove_from_cart
 
 urlpatterns = [
+     path('', views.userindexview, name="home"),
+
      path('userindexview/',views.userindexview,name="userindexview"),
      path('aboutview/',views.aboutview,name="aboutview"),
      path('cartview/',views.cartview,name="cartview"),
